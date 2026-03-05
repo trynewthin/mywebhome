@@ -1,0 +1,89 @@
+/* ═══════════════════════════════════════════
+   MyWebHome — Light Theme (Swiss Editorial / Brutalist Light)
+   极其干净、明亮的杂志印刷风格，采用克莱因蓝为点缀
+   ═══════════════════════════════════════════ */
+
+[data-theme="light"] {
+    /* 主色调 - 克莱因蓝 / 极致高反差蓝 */
+    --color-primary: #002FA7;
+    --color-primary-hover: #001f70;
+
+    /* 辅助色 */
+    --color-accent: #FF3333;
+    --color-accent-alt: #111111;
+
+    /* 状态色 */
+    --color-success: #00AA44;
+    --color-warning: #EE9900;
+    --color-danger: #EE2222;
+
+    /* 明亮主题背景 - 使用略带温度的纸张白 */
+    --bg-base: #F7F7F4;
+    --bg-surface: #FFFFFF;
+    --bg-surface-hover: #F0F0ED;
+    --bg-elevated: #FFFFFF;
+    --bg-card: #FFFFFF;
+
+    /* 文字颜色 - 浓烈的印刷黑 */
+    --text-primary: #0A0A0A;
+    --text-secondary: #555555;
+    --text-muted: #888888;
+    --text-inverse: #FFFFFF;
+
+    /* 边框（依然生硬且无倒角，加深颜色确保清晰的轮廓） */
+    --border-subtle: #E5E5E5;
+    --border-default: #111111;
+    --border-hover: #002FA7;
+    --border-primary: var(--color-primary);
+
+    /* 阴影保留，改为黑白印刷风格的粗犷阴影 */
+    --shadow-sm: 2px 2px 0 var(--border-default);
+    --shadow-md: 4px 4px 0 var(--border-default);
+    --shadow-lg: 6px 6px 0 var(--border-default);
+    --shadow-primary: 3px 3px 0 var(--color-primary);
+    --shadow-accent: 3px 3px 0 var(--color-accent);
+}
+
+/* 覆盖特定组件中的写死颜色 */
+
+/* 细化明亮模式的网格背景 */
+[data-theme="light"] body {
+    background-image:
+        linear-gradient(#E5E5E5 1px, transparent 1px),
+        linear-gradient(90deg, #E5E5E5 1px, transparent 1px);
+}
+
+[data-theme="light"] body::before {
+    background: radial-gradient(circle at center, transparent 0%, var(--bg-base) 100%);
+}
+
+[data-theme="light"] .loading-screen {
+    background: var(--bg-base);
+}
+
+/* 侧边栏及头部去除了原有的纯黑硬透明度，改为白底半透 */
+[data-theme="light"] .sidebar {
+    background: rgba(247, 247, 244, 0.95);
+}
+
+[data-theme="light"] .header {
+    background: rgba(247, 247, 244, 0.85);
+}
+
+/* 按钮与交互调整（确保黑色描边与底色反差） */
+[data-theme="light"] .btn-ghost {
+    box-shadow: 2px 2px 0 var(--border-default);
+}
+
+[data-theme="light"] .btn-ghost:hover {
+    box-shadow: 3px 3px 0 var(--color-primary);
+}
+
+/* 空状态的斜条纹背景在浅色下减弱对比度 */
+[data-theme="light"] .empty-state {
+    background: repeating-linear-gradient(45deg,
+            transparent,
+            transparent 10px,
+            var(--bg-surface-hover) 10px,
+            var(--bg-surface-hover) 20px);
+}
