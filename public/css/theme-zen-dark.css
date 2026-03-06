@@ -1,0 +1,362 @@
+/* ═══════════════════════════════════════════
+   MyWebHome — Zen Garden (和式極簡) — Dark Mode
+   侘寂美学 · 炭灰 + 暖金 · 柔和阴影 · 圆角回归
+   ═══════════════════════════════════════════ */
+
+[data-style="zen"] {
+    /* 主色调 — 暖金 / 竹叶金 */
+    --color-primary: #D4A853;
+    --color-primary-hover: #C4923A;
+
+    /* 辅助色 — 柿色 + 苔绿 */
+    --color-accent: #D45B3E;
+    --color-accent-alt: #7BA576;
+
+    /* 状态色（低饱和度，不刺眼） */
+    --color-success: #7BA576;
+    --color-warning: #D4A853;
+    --color-danger: #C65D4A;
+
+    /* 炭灰暗色背景 — 带微暖色温 */
+    --bg-base: #1A1917;
+    --bg-surface: #222120;
+    --bg-surface-hover: #2C2B29;
+    --bg-elevated: #292826;
+    --bg-card: #242321;
+
+    /* 文字 — 略带暖灰，不纯白 */
+    --text-primary: #E8E4DC;
+    --text-secondary: #A8A298;
+    --text-muted: #6B665E;
+    --text-inverse: #1A1917;
+
+    /* 边框 — 暖灰调 */
+    --border-subtle: #2E2D2A;
+    --border-default: #3D3B37;
+    --border-hover: #5A5650;
+    --border-primary: var(--color-primary);
+
+    /* 圆角 — 温和回归 */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --radius-xl: 20px;
+
+    /* 阴影 — 柔和 blur 而非偏移 */
+    --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.25);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.35);
+    --shadow-primary: 0 4px 20px rgba(212, 168, 83, 0.15);
+    --shadow-accent: 0 4px 20px rgba(212, 91, 62, 0.12);
+
+    /* 动画 — 缓慢呼吸感 */
+    --transition-fast: 150ms ease;
+    --transition-normal: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 800ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* 字体 — 和式混排 */
+    --font-sans: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    --font-display: 'Noto Serif JP', 'Source Han Serif CN', Georgia, serif;
+}
+
+/* ─── 背景 — 去掉工程网格，改为微噪点和纸质感 ─── */
+[data-style="zen"] body {
+    background-image: none;
+    background-color: var(--bg-base);
+}
+
+[data-style="zen"] body::before {
+    background: none;
+}
+
+/* ─── Sidebar — 柔和 ─── */
+[data-style="zen"] .sidebar {
+    background: rgba(26, 25, 23, 0.92);
+    backdrop-filter: blur(20px);
+    border-right: 1px solid var(--border-subtle);
+    border-radius: 0;
+}
+
+[data-style="zen"] .sidebar-logo-icon {
+    border-radius: var(--radius-sm);
+    border: none;
+}
+
+[data-style="zen"] .nav-item {
+    border-radius: var(--radius-sm);
+    border-left: none;
+    margin: 2px 0;
+}
+
+[data-style="zen"] .nav-item:hover {
+    border-left: none;
+}
+
+[data-style="zen"] .nav-item.active {
+    border-left: none;
+    box-shadow: none;
+    background: rgba(212, 168, 83, 0.1);
+    border-radius: var(--radius-sm);
+}
+
+[data-style="zen"] .nav-section-title {
+    border-bottom: none;
+    opacity: 0.5;
+    letter-spacing: 3px;
+}
+
+/* ─── Header — 柔化 ─── */
+[data-style="zen"] .header {
+    background: rgba(26, 25, 23, 0.85);
+    backdrop-filter: blur(24px);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+[data-style="zen"] .content {
+    --content-fade-height: 40px;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0px, black 40px);
+    mask-image: linear-gradient(to bottom, transparent 0px, black 40px);
+}
+
+[data-style="zen"] .header-title::before {
+    content: '';
+    margin-right: 0;
+}
+
+[data-style="zen"] .header-title {
+    text-transform: none;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+}
+
+/* ─── Module Card — 圆角 + 柔和阴影 ─── */
+[data-style="zen"] .module-card {
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-subtle);
+    transition: all var(--transition-normal);
+}
+
+[data-style="zen"] .module-card::after {
+    display: none;
+}
+
+[data-style="zen"] .module-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary);
+}
+
+[data-style="zen"] .module-card-icon {
+    filter: none;
+}
+
+[data-style="zen"] .module-card-name {
+    text-transform: none;
+    letter-spacing: 0.02em;
+    font-weight: 600;
+}
+
+/* ─── Buttons — 圆角 + 柔和 ─── */
+[data-style="zen"] .btn {
+    border-radius: var(--radius-sm);
+    text-transform: none;
+    letter-spacing: 0.03em;
+    transition: all var(--transition-normal);
+}
+
+[data-style="zen"] .btn:active {
+    transform: scale(0.97);
+}
+
+[data-style="zen"] .btn-primary {
+    box-shadow: var(--shadow-sm);
+}
+
+[data-style="zen"] .btn-primary:hover {
+    box-shadow: var(--shadow-primary);
+}
+
+[data-style="zen"] .btn-ghost {
+    box-shadow: none;
+    border-color: var(--border-default);
+}
+
+[data-style="zen"] .btn-ghost:hover {
+    box-shadow: var(--shadow-sm);
+    background: var(--bg-surface-hover);
+    border-color: var(--color-primary);
+}
+
+[data-style="zen"] .btn-danger {
+    box-shadow: var(--shadow-sm);
+}
+
+/* ─── Form — 圆角 + 柔和内阴影 ─── */
+[data-style="zen"] .form-input,
+[data-style="zen"] .form-select,
+[data-style="zen"] .form-textarea {
+    border-radius: var(--radius-sm);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+    color: var(--text-primary);
+}
+
+[data-style="zen"] .form-input:focus,
+[data-style="zen"] .form-select:focus,
+[data-style="zen"] .form-textarea:focus {
+    box-shadow: 0 0 0 2px rgba(212, 168, 83, 0.3);
+    border-color: var(--color-primary);
+}
+
+/* ─── Table — 圆角包裹 ─── */
+[data-style="zen"] .table-wrap {
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-subtle);
+    overflow: hidden;
+}
+
+/* ─── Badges — 圆角药丸 ─── */
+[data-style="zen"] .badge {
+    border-radius: 999px;
+    padding: 4px 12px;
+}
+
+/* ─── Stat Card — 圆角 ─── */
+[data-style="zen"] .stat-grid {
+    gap: 12px;
+    background: none;
+    border: none;
+}
+
+[data-style="zen"] .stat-card {
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-sm);
+}
+
+/* ─── Empty State — 去斜条纹 ─── */
+[data-style="zen"] .empty-state {
+    background: var(--bg-surface);
+    border-radius: var(--radius-lg);
+    border: 1px dashed var(--border-default);
+}
+
+[data-style="zen"] .empty-state-title {
+    text-transform: none;
+}
+
+/* ─── Settings Card — 圆角 ─── */
+[data-style="zen"] .settings-card {
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-subtle);
+}
+
+/* ─── Toast — 圆角 ─── */
+[data-style="zen"] .toast {
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-subtle);
+}
+
+/* ─── Modal — 圆角 ─── */
+[data-style="zen"] .modal-overlay {
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(8px);
+}
+
+[data-style="zen"] .modal {
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-subtle);
+}
+
+/* ─── Login Card — 圆角 ─── */
+[data-style="zen"] .login-card {
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-subtle);
+}
+
+[data-style="zen"] .login-screen {
+    background-image: none;
+}
+
+/* ─── Loading Spinner — 圆形 ─── */
+[data-style="zen"] .loading-spinner {
+    border-radius: 50%;
+    animation: zenSpin 1.2s ease-in-out infinite;
+}
+
+@keyframes zenSpin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* ─── Scrollbar — 圆角 ─── */
+[data-style="zen"] ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+}
+
+[data-style="zen"] ::-webkit-scrollbar-track {
+    border-left: none;
+}
+
+/* ─── Dashboard Widget — 圆角 ─── */
+[data-style="zen"] .dashboard-widget-card {
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-sm);
+}
+
+/* ─── Dashboard Greeting — 柔化 ─── */
+[data-style="zen"] .dashboard-greeting {
+    border-left: 3px solid var(--color-primary);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+[data-style="zen"] .dashboard-greeting h1 {
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 700;
+}
+
+[data-style="zen"] .dashboard-greeting p {
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+/* ─── Toggle Switch — 圆角 ─── */
+[data-style="zen"] .toggle-switch .toggle-slider {
+    border-radius: 999px;
+}
+
+[data-style="zen"] .toggle-switch .toggle-slider::before {
+    border-radius: 50%;
+}
+
+/* ─── Bottom Bar (Mobile) — 圆角化 ─── */
+@media (max-width: 768px) {
+    [data-style="zen"] .bottom-bar {
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        border-top: 1px solid var(--border-subtle);
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    [data-style="zen"] .bottom-bar-icon {
+        filter: none;
+    }
+
+    [data-style="zen"] .launcher-panel {
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
+
+    [data-style="zen"] .launcher-item {
+        border-radius: var(--radius-md);
+    }
+}

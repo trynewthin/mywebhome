@@ -1,0 +1,106 @@
+/* ═══════════════════════════════════════════
+   MyWebHome — Zen Garden (和式極簡) — Light Mode
+   和纸白 · 墨色 · 竹林绿点缀 · 柔化一切
+   ═══════════════════════════════════════════ */
+
+[data-style="zen"][data-theme="light"] {
+    /* 主色调 — 深竹金 */
+    --color-primary: #8B6914;
+    --color-primary-hover: #785A0F;
+
+    /* 辅助色 */
+    --color-accent: #B84632;
+    --color-accent-alt: #4A7856;
+
+    /* 状态色 — 低饱和 */
+    --color-success: #4A7856;
+    --color-warning: #B8860B;
+    --color-danger: #B84632;
+
+    /* 和纸白背景 */
+    --bg-base: #FAF8F5;
+    --bg-surface: #FFFFFF;
+    --bg-surface-hover: #F5F2EE;
+    --bg-elevated: #FFFFFF;
+    --bg-card: #FFFFFF;
+
+    /* 文字 — 墨色系 */
+    --text-primary: #2C2A25;
+    --text-secondary: #6B665E;
+    --text-muted: #A8A298;
+    --text-inverse: #FAF8F5;
+
+    /* 边框 — 极轻暖灰 */
+    --border-subtle: #EDE9E3;
+    --border-default: #D5D0C8;
+    --border-hover: #8B6914;
+    --border-primary: var(--color-primary);
+
+    /* 阴影 — 极轻极柔和 */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1);
+    --shadow-primary: 0 4px 16px rgba(139, 105, 20, 0.12);
+    --shadow-accent: 0 4px 16px rgba(184, 70, 50, 0.08);
+}
+
+/* 背景 — 纯净和纸白 */
+[data-style="zen"][data-theme="light"] body {
+    background-image: none;
+    background-color: var(--bg-base);
+}
+
+[data-style="zen"][data-theme="light"] body::before {
+    background: none;
+}
+
+/* Sidebar — 和纸质感 */
+[data-style="zen"][data-theme="light"] .sidebar {
+    background: rgba(250, 248, 245, 0.92);
+    border-right: 1px solid var(--border-subtle);
+}
+
+/* Header — 透明和纸 */
+[data-style="zen"][data-theme="light"] .header {
+    background: rgba(250, 248, 245, 0.88);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+/* Nav active — 暖色高亮 */
+[data-style="zen"][data-theme="light"] .nav-item.active {
+    background: rgba(139, 105, 20, 0.08);
+}
+
+/* Loading Screen */
+[data-style="zen"][data-theme="light"] .loading-screen {
+    background: var(--bg-base);
+}
+
+/* Login Screen */
+[data-style="zen"][data-theme="light"] .login-screen {
+    background-image: none;
+    background-color: var(--bg-base);
+}
+
+/* Ghost Button */
+[data-style="zen"][data-theme="light"] .btn-ghost:hover {
+    background: var(--bg-surface-hover);
+}
+
+/* Empty State */
+[data-style="zen"][data-theme="light"] .empty-state {
+    background: var(--bg-surface);
+}
+
+/* Form inputs */
+[data-style="zen"][data-theme="light"] .form-input,
+[data-style="zen"][data-theme="light"] .form-select,
+[data-style="zen"][data-theme="light"] .form-textarea {
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+[data-style="zen"][data-theme="light"] .form-input:focus,
+[data-style="zen"][data-theme="light"] .form-select:focus,
+[data-style="zen"][data-theme="light"] .form-textarea:focus {
+    box-shadow: 0 0 0 2px rgba(139, 105, 20, 0.2);
+}

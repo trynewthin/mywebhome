@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="description" content="MyWebHome — AI 驱动的模块化个人 Web 平台">
     <title>MyWebHome</title>
 
@@ -27,12 +28,30 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Syne:wght@400;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Syne:wght@400;600;700;800&family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
     <!-- Styles -->
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/theme-light.css">
+    <link rel="stylesheet" href="/css/theme-zen-dark.css">
+    <link rel="stylesheet" href="/css/theme-zen-light.css">
+    <link rel="stylesheet" href="/css/theme-aurora-dark.css">
+    <link rel="stylesheet" href="/css/theme-aurora-light.css">
+
+    <!-- 在 body 渲染前同步设置主题属性，确保加载屏样式正确 -->
+    <script>
+        (function () {
+            const theme = localStorage.getItem('mywebhome-theme') || 'dark';
+            const style = localStorage.getItem('mywebhome-style') || 'brutalist';
+            let resolved = theme;
+            if (theme === 'auto') {
+                resolved = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+            document.documentElement.setAttribute('data-theme', resolved);
+            document.documentElement.setAttribute('data-style', style);
+        })();
+    </script>
 </head>
 
 <body>

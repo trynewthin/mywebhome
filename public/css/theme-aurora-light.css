@@ -1,0 +1,132 @@
+/* ═══════════════════════════════════════════
+   MyWebHome — Aurora Glass (极光玻璃拟态) — Light Mode
+   霜雾白 · 薰衣草淡紫 · 流光细节
+   ═══════════════════════════════════════════ */
+
+[data-style="aurora"][data-theme="light"] {
+    /* 主色调 — 深极光紫 */
+    --color-primary: #6D4AE6;
+    --color-primary-hover: #5A38D0;
+
+    /* 辅助色 */
+    --color-accent: #E04E8A;
+    --color-accent-alt: #0EA5E9;
+
+    /* 状态色 */
+    --color-success: #059669;
+    --color-warning: #D97706;
+    --color-danger: #E04E8A;
+
+    /* 霜雾白背景 — 带微紫色温 */
+    --bg-base: #F4F2F8;
+    --bg-surface: rgba(255, 255, 255, 0.7);
+    --bg-surface-hover: rgba(240, 237, 248, 0.8);
+    --bg-elevated: rgba(255, 255, 255, 0.85);
+    --bg-card: rgba(255, 255, 255, 0.6);
+
+    /* 文字 — 深靛蓝 */
+    --text-primary: #1E1B2E;
+    --text-secondary: #5B5675;
+    --text-muted: #9490A8;
+    --text-inverse: #F4F2F8;
+
+    /* 边框 — 淡紫 */
+    --border-subtle: rgba(109, 74, 230, 0.06);
+    --border-default: rgba(109, 74, 230, 0.12);
+    --border-hover: rgba(109, 74, 230, 0.3);
+    --border-primary: var(--color-primary);
+
+    /* 阴影 — 极轻淡紫 */
+    --shadow-sm: 0 1px 4px rgba(109, 74, 230, 0.06);
+    --shadow-md: 0 4px 16px rgba(109, 74, 230, 0.08);
+    --shadow-lg: 0 8px 32px rgba(109, 74, 230, 0.1);
+    --shadow-primary: 0 4px 20px rgba(109, 74, 230, 0.15);
+    --shadow-accent: 0 4px 20px rgba(224, 78, 138, 0.1);
+}
+
+/* 背景 — 霜雾白 + 极淡极光 */
+[data-style="aurora"][data-theme="light"] body {
+    background-image: none;
+    background-color: var(--bg-base);
+}
+
+[data-style="aurora"][data-theme="light"] body::before {
+    background:
+        radial-gradient(ellipse 80% 60% at 20% 10%, rgba(109, 74, 230, 0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(224, 78, 138, 0.04) 0%, transparent 50%),
+        radial-gradient(ellipse 70% 40% at 60% 30%, rgba(14, 165, 233, 0.04) 0%, transparent 50%);
+}
+
+/* Sidebar — 白色毛玻璃 */
+[data-style="aurora"][data-theme="light"] .sidebar {
+    background: rgba(244, 242, 248, 0.8);
+    border-right: 1px solid var(--border-subtle);
+}
+
+/* Header */
+[data-style="aurora"][data-theme="light"] .header {
+    background: rgba(244, 242, 248, 0.7);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+/* Nav active */
+[data-style="aurora"][data-theme="light"] .nav-item.active {
+    background: rgba(109, 74, 230, 0.08);
+}
+
+/* Loading */
+[data-style="aurora"][data-theme="light"] .loading-screen {
+    background: var(--bg-base);
+}
+
+[data-style="aurora"][data-theme="light"] .loading-spinner {
+    box-shadow: 0 0 12px rgba(109, 74, 230, 0.15);
+}
+
+/* Login */
+[data-style="aurora"][data-theme="light"] .login-screen {
+    background-image: none;
+    background-color: var(--bg-base);
+}
+
+/* Ghost Button */
+[data-style="aurora"][data-theme="light"] .btn-ghost:hover {
+    background: rgba(109, 74, 230, 0.06);
+}
+
+/* Empty State */
+[data-style="aurora"][data-theme="light"] .empty-state {
+    background: var(--bg-card);
+}
+
+/* Form inputs */
+[data-style="aurora"][data-theme="light"] .form-input,
+[data-style="aurora"][data-theme="light"] .form-select,
+[data-style="aurora"][data-theme="light"] .form-textarea {
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: none;
+}
+
+[data-style="aurora"][data-theme="light"] .form-input:focus,
+[data-style="aurora"][data-theme="light"] .form-select:focus,
+[data-style="aurora"][data-theme="light"] .form-textarea:focus {
+    box-shadow: 0 0 0 2px rgba(109, 74, 230, 0.2);
+    background: rgba(255, 255, 255, 0.85);
+}
+
+/* Greeting gradient text — 亮色下用更深的渐变 */
+[data-style="aurora"][data-theme="light"] .dashboard-greeting h1 {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Scrollbar */
+[data-style="aurora"][data-theme="light"] ::-webkit-scrollbar-thumb {
+    background: rgba(109, 74, 230, 0.15);
+}
+
+[data-style="aurora"][data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+    background: rgba(109, 74, 230, 0.35);
+}

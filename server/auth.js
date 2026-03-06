@@ -66,11 +66,24 @@ export function verifyPassword(password) {
     const hash = hashPassword(password);
 
     if (hash === stored) {
-        // 成功：重置计数，生成 token
+        // 成功：重置计数，生成新 token 并追加到列表
         setSetting('auth_fail_count', '0');
         const token = randomBytes(32).toString('hex');
-        setSetting('auth_token', token);
-        setSetting('auth_token_time', Date.now().toString());
+        const now = Date.now();
+
+        // 读取现有 token 列表
+        let tokens = [];
+        try {
+            tokens = JSON.parse(getSetting('auth_tokens') || '[]');
+        } catch { tokens = []; }
+
+        // 清理过期 token（24h）并限制最多 10 个活跃会话
+        const maxAge = 24 * 60 * 60 * 1000;
+        tokens = tokens.filter(t => (now - t.time) < maxAge);
+        tokens.push({ token, time: now });
+        if (tokens.length > 10) tokens = tokens.slice(-10);
+
+        setSetting('auth_tokens', JSON.stringify(tokens));
         return { success: true, token };
     }
 
@@ -88,12 +101,24 @@ export function verifyPassword(password) {
 
 /** 验证 token 是否有效（24小时过期） */
 export function verifyToken(token) {
-    const stored = getSetting('auth_token');
-    const time = parseInt(getSetting('auth_token_time') || '0');
-    if (!stored || stored !== token) return false;
-    // 24小时过期
-    if (Date.now() - time > 24 * 60 * 60 * 1000) return false;
-    return true;
+    if (!token) return false;
+
+    // 兼容旧单 token 格式
+    const legacyToken = getSetting('auth_token');
+    if (legacyToken && legacyToken === token) {
+        const legacyTime = parseInt(getSetting('auth_token_time') || '0');
+        if (Date.now() - legacyTime < 24 * 60 * 60 * 1000) return true;
+    }
+
+    // 多 token 列表验证
+    let tokens = [];
+    try {
+        tokens = JSON.parse(getSetting('auth_tokens') || '[]');
+    } catch { return false; }
+
+    const now = Date.now();
+    const maxAge = 24 * 60 * 60 * 1000;
+    return tokens.some(t => t.token === token && (now - t.time) < maxAge);
 }
 
 /** CLI 用：重置密码并解锁 */
@@ -106,4 +131,5 @@ export function resetPassword(newPassword) {
     setSetting('auth_fail_count', '0');
     setSetting('auth_locked', 'false');
     setSetting('auth_token', ''); // 使旧 token 失效
+    setSetting('auth_tokens', '[]'); // 清空所有会话
 }

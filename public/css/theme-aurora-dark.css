@@ -1,0 +1,463 @@
+/* ═══════════════════════════════════════════
+   MyWebHome — Aurora Glass (极光玻璃拟态) — Dark Mode
+   Glassmorphism · 极光渐变 · 毛玻璃 · 流光色彩
+   ═══════════════════════════════════════════ */
+
+[data-style="aurora"] {
+    /* 主色调 — 极光蓝紫 */
+    --color-primary: #7C5CFC;
+    --color-primary-hover: #6A4AE8;
+
+    /* 辅助色 — 极光粉 + 极光青 */
+    --color-accent: #F471B5;
+    --color-accent-alt: #38BDF8;
+
+    /* 状态色 — 鲜亮但和谐 */
+    --color-success: #34D399;
+    --color-warning: #FBBF24;
+    --color-danger: #FB7185;
+
+    /* 深空暗底 — 带微蓝色温 */
+    --bg-base: #0B0E17;
+    --bg-surface: rgba(20, 25, 40, 0.65);
+    --bg-surface-hover: rgba(30, 38, 62, 0.7);
+    --bg-elevated: rgba(25, 30, 50, 0.75);
+    --bg-card: rgba(18, 22, 38, 0.6);
+
+    /* 文字 */
+    --text-primary: #EDF0F7;
+    --text-secondary: #94A3C0;
+    --text-muted: #4F5B78;
+    --text-inverse: #0B0E17;
+
+    /* 边框 — 半透明发光边 */
+    --border-subtle: rgba(124, 92, 252, 0.08);
+    --border-default: rgba(124, 92, 252, 0.15);
+    --border-hover: rgba(124, 92, 252, 0.35);
+    --border-primary: var(--color-primary);
+
+    /* 圆角 — 大圆角 */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+    --radius-xl: 24px;
+
+    /* 阴影 — 发光型阴影 */
+    --shadow-sm: 0 2px 8px rgba(124, 92, 252, 0.08);
+    --shadow-md: 0 4px 24px rgba(124, 92, 252, 0.12);
+    --shadow-lg: 0 8px 48px rgba(124, 92, 252, 0.16);
+    --shadow-primary: 0 4px 24px rgba(124, 92, 252, 0.25);
+    --shadow-accent: 0 4px 24px rgba(244, 113, 181, 0.15);
+
+    /* 动画 — 流畅 */
+    --transition-fast: 150ms ease-out;
+    --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 600ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* 字体 — 现代几何 */
+    --font-sans: 'Outfit', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    --font-display: 'Space Grotesk', 'Outfit', sans-serif;
+}
+
+/* ─── 背景 — 极光渐变 mesh ─── */
+[data-style="aurora"] body {
+    background-image: none;
+    background-color: var(--bg-base);
+    position: relative;
+}
+
+[data-style="aurora"] body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 80% 60% at 20% 10%, rgba(124, 92, 252, 0.15) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(244, 113, 181, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse 70% 40% at 60% 30%, rgba(56, 189, 248, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+    animation: auroraShift 20s ease-in-out infinite alternate;
+}
+
+@keyframes auroraShift {
+    0% {
+        opacity: 0.8;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.7;
+    }
+}
+
+/* ─── Sidebar — 毛玻璃 ─── */
+[data-style="aurora"] .sidebar {
+    background: rgba(15, 18, 30, 0.75);
+    backdrop-filter: blur(24px) saturate(1.5);
+    border-right: 1px solid var(--border-default);
+    border-radius: 0;
+}
+
+[data-style="aurora"] .sidebar-logo-icon {
+    border-radius: var(--radius-sm);
+    border: none;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+}
+
+[data-style="aurora"] .nav-item {
+    border-radius: var(--radius-sm);
+    border-left: none;
+    margin: 2px 0;
+    transition: all var(--transition-normal);
+}
+
+[data-style="aurora"] .nav-item:hover {
+    border-left: none;
+    background: rgba(124, 92, 252, 0.1);
+}
+
+[data-style="aurora"] .nav-item.active {
+    border-left: none;
+    box-shadow: none;
+    background: rgba(124, 92, 252, 0.15);
+    color: var(--color-primary);
+}
+
+[data-style="aurora"] .nav-item.active .nav-item-icon {
+    filter: none;
+    text-shadow: 0 0 8px rgba(124, 92, 252, 0.5);
+}
+
+[data-style="aurora"] .nav-section-title {
+    border-bottom: none;
+    opacity: 0.4;
+    letter-spacing: 3px;
+}
+
+[data-style="aurora"] .nav-item-icon {
+    filter: none;
+}
+
+/* ─── Header — 毛玻璃 ─── */
+[data-style="aurora"] .header {
+    background: rgba(11, 14, 23, 0.6);
+    backdrop-filter: blur(28px) saturate(1.5);
+    border-bottom: 1px solid rgba(124, 92, 252, 0.12);
+}
+
+[data-style="aurora"] .content {
+    --content-fade-height: 32px;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0px, black 32px);
+    mask-image: linear-gradient(to bottom, transparent 0px, black 32px);
+}
+
+[data-style="aurora"] .header-title::before {
+    content: '';
+    margin-right: 0;
+}
+
+[data-style="aurora"] .header-title {
+    text-transform: none;
+    letter-spacing: 0.03em;
+    font-weight: 600;
+}
+
+/* ─── Module Card — 玻璃卡片 ─── */
+[data-style="aurora"] .module-card {
+    border-radius: var(--radius-md);
+    background: var(--bg-card);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border-default);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-normal);
+}
+
+[data-style="aurora"] .module-card::after {
+    display: none;
+}
+
+[data-style="aurora"] .module-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary);
+    background: rgba(18, 22, 38, 0.8);
+}
+
+[data-style="aurora"] .module-card-icon {
+    filter: none;
+}
+
+[data-style="aurora"] .module-card-name {
+    text-transform: none;
+    letter-spacing: 0.02em;
+    font-weight: 600;
+}
+
+/* ─── Buttons — 渐变高光 ─── */
+[data-style="aurora"] .btn {
+    border-radius: var(--radius-sm);
+    text-transform: none;
+    letter-spacing: 0.02em;
+    transition: all var(--transition-normal);
+}
+
+[data-style="aurora"] .btn:active {
+    transform: scale(0.96);
+}
+
+[data-style="aurora"] .btn-primary {
+    background: linear-gradient(135deg, var(--color-primary), #9B7DFC);
+    border-color: transparent;
+    box-shadow: var(--shadow-primary);
+    color: #fff;
+}
+
+[data-style="aurora"] .btn-primary:hover {
+    box-shadow: 0 6px 32px rgba(124, 92, 252, 0.35);
+    filter: brightness(1.1);
+}
+
+[data-style="aurora"] .btn-ghost {
+    box-shadow: none;
+    border-color: var(--border-default);
+    backdrop-filter: blur(8px);
+}
+
+[data-style="aurora"] .btn-ghost:hover {
+    box-shadow: var(--shadow-sm);
+    background: rgba(124, 92, 252, 0.1);
+    border-color: var(--color-primary);
+}
+
+[data-style="aurora"] .btn-danger {
+    background: linear-gradient(135deg, var(--color-danger), #E8456A);
+    border-color: transparent;
+    box-shadow: var(--shadow-sm);
+}
+
+/* ─── Form — 玻璃输入框 ─── */
+[data-style="aurora"] .form-input,
+[data-style="aurora"] .form-select,
+[data-style="aurora"] .form-textarea {
+    border-radius: var(--radius-sm);
+    box-shadow: none;
+    background: rgba(15, 18, 30, 0.5);
+    backdrop-filter: blur(8px);
+    color: var(--text-primary);
+    border: 1px solid var(--border-default);
+}
+
+[data-style="aurora"] .form-input:focus,
+[data-style="aurora"] .form-select:focus,
+[data-style="aurora"] .form-textarea:focus {
+    box-shadow: 0 0 0 2px rgba(124, 92, 252, 0.3), var(--shadow-sm);
+    border-color: var(--color-primary);
+    background: rgba(15, 18, 30, 0.7);
+}
+
+/* ─── Table — 玻璃包裹 ─── */
+[data-style="aurora"] .table-wrap {
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-default);
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+}
+
+/* ─── Badges — 发光药丸 ─── */
+[data-style="aurora"] .badge {
+    border-radius: 999px;
+    padding: 4px 12px;
+    backdrop-filter: blur(4px);
+}
+
+[data-style="aurora"] .badge-primary {
+    background: rgba(124, 92, 252, 0.12);
+}
+
+[data-style="aurora"] .badge-success {
+    background: rgba(52, 211, 153, 0.12);
+}
+
+[data-style="aurora"] .badge-warning {
+    background: rgba(251, 191, 36, 0.12);
+}
+
+[data-style="aurora"] .badge-danger {
+    background: rgba(251, 113, 133, 0.12);
+}
+
+/* ─── Stat Card — 玻璃 ─── */
+[data-style="aurora"] .stat-grid {
+    gap: 12px;
+    background: none;
+    border: none;
+}
+
+[data-style="aurora"] .stat-card {
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-default);
+    box-shadow: var(--shadow-sm);
+    backdrop-filter: blur(12px);
+    background: var(--bg-card);
+}
+
+/* ─── Empty State ─── */
+[data-style="aurora"] .empty-state {
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    border-radius: var(--radius-lg);
+    border: 1px dashed var(--border-default);
+}
+
+[data-style="aurora"] .empty-state-title {
+    text-transform: none;
+}
+
+/* ─── Settings Card ─── */
+[data-style="aurora"] .settings-card {
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-default);
+    backdrop-filter: blur(12px);
+    background: var(--bg-card);
+}
+
+/* ─── Toast ─── */
+[data-style="aurora"] .toast {
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-default);
+    backdrop-filter: blur(16px);
+}
+
+/* ─── Modal ─── */
+[data-style="aurora"] .modal-overlay {
+    background: rgba(11, 14, 23, 0.7);
+    backdrop-filter: blur(12px);
+}
+
+[data-style="aurora"] .modal {
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-default);
+    backdrop-filter: blur(24px);
+    background: var(--bg-elevated);
+}
+
+/* ─── Login Card ─── */
+[data-style="aurora"] .login-card {
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-default);
+    backdrop-filter: blur(24px);
+    background: var(--bg-elevated);
+}
+
+[data-style="aurora"] .login-screen {
+    background-image: none;
+    background-color: var(--bg-base);
+}
+
+/* ─── Loading Spinner — 发光 ─── */
+[data-style="aurora"] .loading-spinner {
+    border-radius: 50%;
+    border-color: rgba(124, 92, 252, 0.2);
+    border-top-color: var(--color-primary);
+    animation: auroraSpin 1s ease-in-out infinite;
+    box-shadow: 0 0 16px rgba(124, 92, 252, 0.2);
+}
+
+@keyframes auroraSpin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* ─── Scrollbar ─── */
+[data-style="aurora"] ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background: rgba(124, 92, 252, 0.25);
+}
+
+[data-style="aurora"] ::-webkit-scrollbar-thumb:hover {
+    background: rgba(124, 92, 252, 0.5);
+}
+
+[data-style="aurora"] ::-webkit-scrollbar-track {
+    border-left: none;
+    background: transparent;
+}
+
+/* ─── Dashboard Widget ─── */
+[data-style="aurora"] .dashboard-widget-card {
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-default);
+    box-shadow: var(--shadow-sm);
+    backdrop-filter: blur(12px);
+    background: var(--bg-card);
+}
+
+/* ─── Dashboard Greeting ─── */
+[data-style="aurora"] .dashboard-greeting {
+    border-left: 3px solid var(--color-primary);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+[data-style="aurora"] .dashboard-greeting h1 {
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent-alt));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+[data-style="aurora"] .dashboard-greeting p {
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+/* ─── Toggle Switch ─── */
+[data-style="aurora"] .toggle-switch .toggle-slider {
+    border-radius: 999px;
+}
+
+[data-style="aurora"] .toggle-switch .toggle-slider::before {
+    border-radius: 50%;
+}
+
+[data-style="aurora"] .toggle-switch input:checked+.toggle-slider {
+    background: linear-gradient(135deg, var(--color-primary), #9B7DFC);
+}
+
+/* ─── Bottom Bar (Mobile) ─── */
+@media (max-width: 768px) {
+    [data-style="aurora"] .bottom-bar {
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        border-top: 1px solid var(--border-subtle);
+        box-shadow: 0 -4px 32px rgba(124, 92, 252, 0.1);
+        backdrop-filter: blur(24px);
+        background: rgba(11, 14, 23, 0.75);
+    }
+
+    [data-style="aurora"] .bottom-bar-icon {
+        filter: none;
+    }
+
+    [data-style="aurora"] .launcher-panel {
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        backdrop-filter: blur(24px);
+    }
+
+    [data-style="aurora"] .launcher-item {
+        border-radius: var(--radius-md);
+    }
+}

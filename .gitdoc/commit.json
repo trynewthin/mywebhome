@@ -1,0 +1,9 @@
+{
+    "branch": "main",
+    "message": "feat: multi-theme system, multi-device auth, iOS & UI polish",
+    "body": "- Add 3 switchable UI styles: Brutalist / Zen Garden / Aurora Glass\n- Add style switcher in settings page (界面风格 dropdown)\n- Sync theme attrs in <head> for correct loading screen style\n- Multi-token auth: support up to 10 concurrent device sessions\n- iOS: disable pinch-zoom and auto-zoom on input focus\n- Header & sidebar toggle: unified rounded-square button style\n- Content area: top mask-image fade on scroll\n- Nav items: use CSS variable border-radius, remove hardcoded glow\n- Remove header box-shadow and ::after gradient across all themes",
+    "files": [
+        "*"
+    ],
+    "create_branch": false
+}
