@@ -448,10 +448,6 @@
         background: rgba(11, 14, 23, 0.75);
     }
 
-    [data-style="aurora"] .bottom-bar-icon {
-        filter: none;
-    }
-
     [data-style="aurora"] .launcher-panel {
         border-radius: var(--radius-lg) var(--radius-lg) 0 0;
         backdrop-filter: blur(24px);

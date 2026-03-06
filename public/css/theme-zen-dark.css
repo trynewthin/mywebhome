@@ -348,10 +348,6 @@
         box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
     }
 
-    [data-style="zen"] .bottom-bar-icon {
-        filter: none;
-    }
-
     [data-style="zen"] .launcher-panel {
         border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     }
