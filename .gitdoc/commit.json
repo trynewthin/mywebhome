@@ -1,9 +1,0 @@
-{
-    "branch": "main",
-    "message": "fix: mobile & sidebar UI polish",
-    "body": "- Fix collapsed sidebar nav overflow (reduce padding, set overflow:hidden)\n- Fix header-actions btn selector to only target shell header buttons\n- Add progress-bar component styles\n- Mobile: remove icon grayscale, add scale feedback on active\n- Mobile: responsive table with sticky first column + scroll shadow hints\n- Mobile: compact table cells (0.8rem, tighter padding)\n- Clean up redundant theme overrides (bottom-bar-icon filter:none)",
-    "files": [
-        "*"
-    ],
-    "create_branch": false
-}
